@@ -1,5 +1,5 @@
 #######################################
-# Syntax Coloring Map For Corsair Lighting Protocol
+# Syntax Coloring Map For NodeProFlux
 #######################################
 
 #######################################
@@ -9,26 +9,37 @@
 ILEDController	KEYWORD1
 LEDController	KEYWORD1
 FastLEDController	KEYWORD1
-CorsairLightingProtocolController	KEYWORD1
-CorsairLightingProtocolHID	KEYWORD1
-CorsairLightingProtocolTinyUSBHID	KEYWORD1
-CorsairLightingProtocolSerial	KEYWORD1
-CorsairLightingProtocolResponse	KEYWORD1
-CorsairLightingFirmware	KEYWORD1
+NodeProFluxController	KEYWORD1
+NodeProFluxHID	KEYWORD1
+NodeProFluxTinyUSBHID	KEYWORD1
+NodeProFluxSerial	KEYWORD1
+NodeProFluxResponse	KEYWORD1
+NodeProFluxFirmware	KEYWORD1
+NodeProFluxFirmwareStorageEEPROM	KEYWORD1
+NodeProFluxFirmwareStorageStatic	KEYWORD1
+FastLEDControllerStorageEEPROM	KEYWORD1
 IFanController	KEYWORD1
 FanController	KEYWORD1
 ITemperatureController	KEYWORD1
 TemperatureController	KEYWORD1
+NPF	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-
-#######################################
-# Instances (KEYWORD1)
-#######################################
-
+disableBuildInLEDs	KEYWORD2
+transformLLFanToStrip	KEYWORD2
+transformLC100ToStrip	KEYWORD2
+scale	KEYWORD2
+repeat	KEYWORD2
+scaleSegments	KEYWORD2
+reverse	KEYWORD2
+gammaCorrection	KEYWORD2
+fixIcueBrightness	KEYWORD2
+updateLEDs	KEYWORD2
+addLEDs	KEYWORD2
+onUpdateHook	KEYWORD2
 
 #######################################
 # Structures (KEYWORD3)
@@ -39,9 +50,14 @@ Command	KEYWORD3
 FanCurve	KEYWORD3
 LEDChannel	KEYWORD3
 LEDGroup	KEYWORD3
-SegmentScaling  KEYWORD3
+SegmentScaling	KEYWORD3
 
 #######################################
 # Constants (LITERAL1)
 #######################################
 
+NPF_LIGHTING_NODE_PRO	LITERAL1
+NPF_COMMANDER_PRO	LITERAL1
+NPF_LIGHTING_NODE_CORE	LITERAL1
+NPF_SMART_LIGHTING_CONTROLLER	LITERAL1
+NPF_SMART_LIGHTING_TOWERS	LITERAL1
