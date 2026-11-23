@@ -1,0 +1,15 @@
+NodeProFlux
+Copyright 2026 ILogEverything
+
+This product includes software derived from Corsair Lighting Protocol,
+Copyright 2019-2021 Leon Kiefer, https://github.com/Legion2/CorsairLightingProtocol,
+licensed under the Apache License, Version 2.0.
+
+Changes made to the original work:
+- All public classes, macros, files and the namespace were renamed to NodeProFlux / NPF.
+- Compatibility with FastLED 3.10.x (dim8_video replaced by a local helper).
+- New example for a multi-pin Node PRO with automatic switch-off.
+- Removed examples for hardware not supported by this project.
+- README, library metadata and keywords rewritten.
+
+The original copyright notices in the source files are retained, as required by the license.
