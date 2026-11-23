@@ -45,7 +45,7 @@ Each pin is a separate FastLED controller writing into a segment of the shared c
 **Auto-off:** if no update arrives for 1 second (`NO_UPDATE_TIMEOUT_MS`), all LEDs are turned off. This is what switches the lights off when SignalRGB stops sending data or the PC is shut down while USB stays powered.
 
 ```cpp
-#include <CorsairLightingProtocol.h>
+#include <NodeProFlux.h>
 #include <FastLED.h>
 
 #define DATA_PIN2 3
@@ -74,16 +74,15 @@ Each pin is a separate FastLED controller writing into a segment of the shared c
 CRGB ledsChannel1[CH1_TOTAL];
 CRGB ledsChannel2[CH2_TOTAL];
 
-// Change both IDs if you use more than one device on the same PC
-const char mySerialNumber[] PROGMEM = "<YOUR_HEX_SERIAL>";
+const char mySerialNumber[] PROGMEM = "262E264E226D1AC6A5DC";
 
-DeviceID deviceId = { 0x00, 0x00, 0x00, 0x00 };  // <YOUR_DEVICE_ID>
-CorsairLightingFirmwareStorageStatic firmwareStorage(deviceId);
-CorsairLightingFirmware firmware(CORSAIR_LIGHTING_NODE_PRO, &firmwareStorage);
+DeviceID deviceId = { 0x26, 0x2E, 0x26, 0x4E };
+NodeProFluxFirmwareStorageStatic firmwareStorage(deviceId);
+NodeProFluxFirmware firmware(NPF_LIGHTING_NODE_PRO, &firmwareStorage);
 FastLEDControllerStorageEEPROM storage;
 FastLEDController ledController(&storage);
-CorsairLightingProtocolController cLP(&ledController, &firmware);
-CorsairLightingProtocolHID cHID(&cLP, mySerialNumber);
+NodeProFluxController npfController(&ledController, &firmware);
+NodeProFluxHID npfHID(&npfController, mySerialNumber);
 
 uint32_t lastUpdateMs = 0;
 
@@ -94,9 +93,10 @@ void allLedsOff() {
 }
 
 void setup() {
-  CLP::disableBuildInLEDs();
+  NPF::disableBuildInLEDs();
 
   uint16_t offset = 0;
+
   FastLED.addLeds<WS2812B, DATA_PIN2, GRB>(ledsChannel1, offset, LEDS_PIN2);
   offset += LEDS_PIN2;
   FastLED.addLeds<WS2812B, DATA_PIN3, GRB>(ledsChannel1, offset, LEDS_PIN3);
@@ -122,7 +122,7 @@ void setup() {
 }
 
 void loop() {
-  cHID.update();
+  npfHID.update();
   if (ledController.updateLEDs()) {
     FastLED.show();
     lastUpdateMs = millis();
